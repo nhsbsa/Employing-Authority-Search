@@ -1,0 +1,101 @@
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  {{ serviceName }}
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+<!-- Custom style for copy-tag hover effect -->
+<style>
+  .copy-tag {
+    background-color: white;
+    color: #005eb8;
+    border: 1px solid #005eb8;
+  }
+
+  .copy-tag:hover {
+    background-color: #005eb8; /* NHS blue */
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+  }
+</style>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    <form action="search" method="post">
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <span class="nhsuk-caption-xl">Employing authority details</span>
+          <h1 class="nhsuk-heading-l">NHS Dorset Integrated Care Board (PCSE)</h1>
+        </div>
+      </div>
+
+<!-- Merged Address and Contact Number Table -->
+<table id="search-details-table" role="table" class="nhsuk-table-responsive nhsuk-u-margin-top-4">
+  <thead role="rowgroup" class="nhsuk-table__head">
+    <tr role="row">
+    </tr>
+  </thead>
+  <tbody class="nhsuk-table__body">
+
+    <!-- Reference Number Row -->
+    <tr role="row">
+      <td><strong>EA reference number</strong></td>
+      <td id="ea-ref-text">0681</td>
+      <td>
+        <span class="nhsuk-tag copy-tag" role="button" tabindex="0" onclick="copyToClipboard('ea-ref-text')">Copy</span>
+      </td>
+    </tr>
+
+    <!-- Full Address Row -->
+    <tr role="row">
+      <td><strong>Full address</strong></td>
+      <td id="address-text">Dorset Integrated Care Board (PCSE)<br>PO BOX 350<br>DL1 9QN</td>
+      <td>
+        <span class="nhsuk-tag copy-tag" role="button" tabindex="0" onclick="copyToClipboard('address-text')">Copy</span>
+      </td>
+    </tr>
+
+    <!-- Contact Number Row -->
+    <tr role="row">
+      <td><strong>Phone number</strong></td>
+      <td id="phone-text">0333 0142884</td>
+      <td>
+        <span class="nhsuk-tag copy-tag" role="button" tabindex="0" onclick="copyToClipboard('phone-text')">Copy</span>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+    </form>
+  </div>
+</div>
+
+<!-- Copy-to-clipboard script -->
+<script>
+  function copyToClipboard(elementId) {
+    const el = document.getElementById(elementId);
+    if (!el) return;
+
+    // Create a temporary element to extract plain text (strips HTML)
+    const tempEl = document.createElement('textarea');
+    tempEl.value = el.innerText || el.textContent;
+    document.body.appendChild(tempEl);
+    tempEl.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempEl);
+
+  }
+</script>
+
+{% endblock %}

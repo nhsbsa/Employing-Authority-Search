@@ -17,7 +17,7 @@
   service name is needed. You can also reuse this variable
   within the <h1>, where they are the same.
 -->
-{% set pageName = "Employing Authority Search" %}
+{% set pageName = "serviceName" %}
 
 <!-- For adding a breadcrumb or back link -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
@@ -28,48 +28,61 @@
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
   <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-grid-column-full-width">
 
-      <!-- You can delete the lines below -->
-      <h2 class="nhsuk-heading-l">
-        NHS prototype kit
-        <span class="nhsuk-caption-xl nhsuk-caption--bottom">Version {{version}}</span>
-      </h2>
-      <hr>
+      <span class="nhsuk-caption-xl">NHS Pensions</span>
+      <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-3">{{ serviceName }}</h1>
+      <p>A service for public and internal purposes, to find the contact details of employing authorities</p>
 
+      <!-- ======================================= -->
+      <!-- ITERATIONS -->
+      <!-- ======================================= -->
 
-      <!-- Add your content here -->
-      <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
+<h2 class="nhsuk-heading-l">Prototype Iterations</h2>
 
-      <h1 class="nhsuk-heading-xl">
-        {{ serviceName }}
-      </h1>
+<table role="table" class="nhsuk-table-responsive">
+  <caption class="nhsuk-table__caption">Project Start: 8th October 2025</caption>
+    <thead role="rowgroup" class="nhsuk-table__head">
+      <tr role="row">
+        <th role="columnheader" class="" scope="col">
+          Version
+        </th>
+        <th role="columnheader" class="" scope="col">
+          Status
+        </th>
+        <th role="columnheader" class="" scope="col">
+          Notes
+        </th>
+        <th role="columnheader" class="" scope="col">
+          Action
+        </th>
+      </tr>
+    </thead>
 
-      <p>Set the service name for your prototype by editing <strong>/app/config.js</strong>.</p>
+    <tbody class="nhsuk-table__body">
+      <tr role="row" class="nhsuk-table__row">
+        <td role="cell" class="nhsuk-table__cell">
+          <span class="nhsuk-table-responsive__heading">Version </span>v1
+        </td>
+        <td role="cell" class="nhsuk-table__cell">
+          <span class="nhsuk-table-responsive__heading">Status </span>
+          <span class="nhsuk-tag nhsuk-tag--red">In progress</span>
+        </td>
+        <td role="cell" class="nhsuk-table__cell">
+          <span class="nhsuk-table-responsive__heading">Notes </span>
 
-      <p>
-        This is the index page for your prototype. You can find it at <strong>/app/views/index.html</strong>.
-      </p>
+            Brief given on 8th October 2025
 
-      <hr>
+        </td>
+         <td role="cell" class="nhsuk-table__cell">
+          <span class="nhsuk-table-responsive__heading">Action </span>
+            <p><a href="v1/start">Start</a></p>
+        </td>
+      </tr>
+      </tr>
+    </tbody>
 
-      <h2 class="nhsuk-heading-l">
-        Get started
-      </h2>
-
-      <ul class="nhsuk-list nhsuk-list--bullet">
-        <li>
-          <a href="https://prototype-kit.service-manual.nhs.uk/how-tos">NHS prototype kit guides</a> – including a tutorial
-        </li>
-        <li>
-          <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a> – for code snippets and guidance on using NHS styles, components and patterns
-        </li>
-      </ul>
-
-      <p>
-        There is a selection of <a href="/example-templates">example page templates</a> in <strong>/lib/example-templates/</strong>. To use these, copy and paste them into <strong>/app/views/</strong>.
-      </p>
-      <!-- End of content -->
+  </table>
 
     </div>
   </div>

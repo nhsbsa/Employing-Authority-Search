@@ -1,0 +1,146 @@
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  {{ serviceName }}
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+{% block beforeContent %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    <form action="search" method="post">
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <h1 class="nhsuk-heading-l">Search</h1>
+        </div>
+      </div>
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="student-ref">EA reference</label>
+            <input class="nhsuk-input nhsuk-input--width-20" id="student-ref" name="student-ref" type="text">
+          </div>
+        </div>
+
+        <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="email">Name</label>
+            <input class="nhsuk-input nhsuk-input--width-20" id="email" name="test-width-20" type="text">
+          </div>
+        </div>
+
+        <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="postcode">Postcode</label>
+            <input class="nhsuk-input nhsuk-input--width-5" id="postcode" name="test-width-5" type="text">
+          </div>
+        </div>
+      </div>
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <button class="nhsuk-button" type="submit">Search</button>
+        </div>
+      </div>
+
+      <!--This heading and table are hidden by default -->
+     <h2 id="search-results-heading" class="nhsuk-heading-l nhsuk-u-margin-top-5" style="display: none;">Search results</h2>
+
+<table id="search-results-table" role="table" class="nhsuk-table-responsive" style="display: none;">
+  <thead role="rowgroup" class="nhsuk-table__head">
+    <tr role="row">
+      <th role="columnheader" scope="col">EA Reference</th>
+      <th role="columnheader" scope="col">Name</th>
+      <th role="columnheader" scope="col">Postcode</th>
+      <th role="columnheader" scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody class="nhsuk-table__body">
+    <tr><td>0681</td><td>NHS Dorset Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details">Details</a></td></tr>
+    <tr><td>0682</td><td>NHS Buckinghamshire, Oxfordshire and Berkshire West Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details">Details</a></td></tr>
+    <tr><td>0683</td><td>NHS Gloucestershire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details">Details</a></td></tr>
+    <tr><td>0684</td><td>NHS Cornwall and the Isles of Scilly Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details">Details</a></td></tr>
+    <tr><td>0685</td><td>NHS Somerset Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details">Details</a></td></tr>
+    <tr><td>0686</td><td>NHS Hampshire and Isle of Wight Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details">Details</a></td></tr>
+    <tr><td>0687</td><td>NHS Sussex Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details">Details</a></td></tr>
+    <tr><td>0689</td><td>NHS Bath and North East Somerset, Swindon and Wiltshire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details">Details</a></td></tr>
+    <tr><td>0690</td><td>NHS Bristol, North Somerset and South Gloucestershire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details">Details</a></td></tr>
+    <tr><td>0693</td><td>NHS Surrey Heartlands Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details">Details</a></td></tr>
+    <tr><td>0695</td><td>NHS Devon Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details">Details</a></td></tr>
+    <tr><td>0701</td><td>Great Ormond Street Hospital for Children NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details">Details</a></td></tr>
+    <tr><td>0704</td><td>Moorfields Eye Hospital NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details">Details</a></td></tr>
+    <tr><td>0705</td><td>South London and Maudsley NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details">Details</a></td></tr>
+    <tr><td>0710</td><td>The Royal Marsden NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details">Details</a></td></tr>
+    <tr><td>0748</td><td>NHS Frimley Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details">Details</a></td></tr>
+    <tr><td>0757</td><td>NHS Kent and Medway Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details">Details</a></td></tr>
+    <tr><td>0761</td><td>NHS South Yorkshire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details">Details</a></td></tr>
+    <tr><td>0763</td><td>NHS Lancashire and South Cumbria Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details">Details</a></td></tr>
+    <tr><td>0780</td><td>NHS West Yorkshire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details">Details</a></td></tr>
+  </tbody>
+</table>
+
+<!-- NHS.UK pagination component -->
+<!--<nav class="nhsuk-pagination" id="search-pagination" style="display: none;" role="navigation" aria-label="Pagination">
+  <ul class="nhsuk-list nhsuk-pagination__list">
+    <li class="nhsuk-pagination-item--previous">
+      <a class="nhsuk-pagination__link" href="#" aria-label="Previous page">
+        <span class="nhsuk-pagination__title">Previous</span>
+        <span class="nhsuk-u-visually-hidden">:</span>
+        <span class="nhsuk-pagination__page">1 of 3</span>
+      </a>
+    </li>
+    <li class="nhsuk-pagination-item--next">
+      <a class="nhsuk-pagination__link" href="#" aria-label="Next page">
+        <span class="nhsuk-pagination__title">Next</span>
+        <span class="nhsuk-u-visually-hidden">:</span>
+        <span class="nhsuk-pagination__page">Page 3</span>
+      </a>
+    </li>
+  </ul>
+</nav>-->
+
+
+      <!--JavaScript to show heading and table on form submission -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const form = document.querySelector('form');
+          const table = document.getElementById('search-results-table');
+          const heading = document.getElementById('search-results-heading');
+
+          form.addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent actual submission
+            table.style.display = 'table';
+            heading.style.display = 'block';
+          });
+        });
+
+    <!--JavaScript to show pagination -->
+    document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('form');
+    const table = document.getElementById('search-results-table');
+    const heading = document.getElementById('search-results-heading');
+    const pagination = document.getElementById('search-pagination');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault(); // Prevent actual submission
+      table.style.display = 'table';
+      heading.style.display = 'block';
+      pagination.style.display = 'block';
+    });
+  });
+      </script>
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}
