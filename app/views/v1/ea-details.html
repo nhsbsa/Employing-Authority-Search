@@ -12,7 +12,6 @@
 
 {% block content %}
 
-<!-- Custom style for copy-tag hover effect -->
 <style>
   .copy-tag {
     background-color: white;
@@ -21,7 +20,7 @@
   }
 
   .copy-tag:hover {
-    background-color: #005eb8; /* NHS blue */
+    background-color: #005eb8; 
     color: white;
     transition: background-color 0.3s, color 0.3s;
     cursor: pointer;
@@ -35,67 +34,89 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
           <span class="nhsuk-caption-xl">Employing authority details</span>
-          <h1 class="nhsuk-heading-l">NHS Dorset Integrated Care Board (PCSE)</h1>
+          <h1 class="nhsuk-heading-l" id="ea-name">Loading...</h1>
         </div>
       </div>
 
-<!-- Merged Address and Contact Number Table -->
-<table id="search-details-table" role="table" class="nhsuk-table-responsive nhsuk-u-margin-top-4">
-  <thead role="rowgroup" class="nhsuk-table__head">
-    <tr role="row">
-    </tr>
-  </thead>
-  <tbody class="nhsuk-table__body">
+      <!-- Details Table -->
+      <table id="search-details-table" role="table" class="nhsuk-table-responsive nhsuk-u-margin-top-4">
+        <tbody class="nhsuk-table__body">
 
-    <!-- Reference Number Row -->
-    <tr role="row">
-      <td><strong>EA reference number</strong></td>
-      <td id="ea-ref-text">0681</td>
-      <td>
-        <span class="nhsuk-tag copy-tag" role="button" tabindex="0" onclick="copyToClipboard('ea-ref-text')">Copy</span>
-      </td>
-    </tr>
+          <tr role="row">
+            <td><strong>EA reference number</strong></td>
+            <td id="ea-ref-text">Loading...</td>
+            <td>
+              <span class="nhsuk-tag copy-tag" role="button" tabindex="0" onclick="copyToClipboard('ea-ref-text')">Copy</span>
+            </td>
+          </tr>
 
-    <!-- Full Address Row -->
-    <tr role="row">
-      <td><strong>Full address</strong></td>
-      <td id="address-text">Dorset Integrated Care Board (PCSE)<br>PO BOX 350<br>DL1 9QN</td>
-      <td>
-        <span class="nhsuk-tag copy-tag" role="button" tabindex="0" onclick="copyToClipboard('address-text')">Copy</span>
-      </td>
-    </tr>
+          <tr role="row">
+            <td><strong>Full address</strong></td>
+            <td id="address-text">Loading...</td>
+            <td>
+              <span class="nhsuk-tag copy-tag" role="button" tabindex="0" onclick="copyToClipboard('address-text')">Copy</span>
+            </td>
+          </tr>
 
-    <!-- Contact Number Row -->
-    <tr role="row">
-      <td><strong>Phone number</strong></td>
-      <td id="phone-text">0333 0142884</td>
-      <td>
-        <span class="nhsuk-tag copy-tag" role="button" tabindex="0" onclick="copyToClipboard('phone-text')">Copy</span>
-      </td>
-    </tr>
+          <tr role="row">
+            <td><strong>Phone number</strong></td>
+            <td id="phone-text">0333 0142884</td>
+            <td>
+              <span class="nhsuk-tag copy-tag" role="button" tabindex="0" onclick="copyToClipboard('phone-text')">Copy</span>
+            </td>
+          </tr>
 
-  </tbody>
-</table>
+        </tbody>
+      </table>
+
+          <!-- New Search Button -->
+    <div class="button-container">
+      <a href="search" class="nhsuk-button nhsuk-button--primary">New search</a>
+    </div>
 
     </form>
   </div>
 </div>
 
-<!-- Copy-to-clipboard script -->
 <script>
+  function getQueryParams() {
+    const params = {};
+    location.search.substring(1).split('&').forEach(function(part) {
+      if (!part) return;
+      const item = part.split('=');
+      const key = decodeURIComponent(item[0]);
+      const value = decodeURIComponent(item[1]);
+      params[key] = value;
+    });
+    return params;
+  }
+
   function copyToClipboard(elementId) {
     const el = document.getElementById(elementId);
     if (!el) return;
 
-    // Create a temporary element to extract plain text (strips HTML)
     const tempEl = document.createElement('textarea');
     tempEl.value = el.innerText || el.textContent;
     document.body.appendChild(tempEl);
     tempEl.select();
     document.execCommand('copy');
     document.body.removeChild(tempEl);
-
   }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const params = getQueryParams();
+
+    const eaRef = params.ref || 'N/A';
+    document.getElementById('ea-ref-text').textContent = eaRef;
+
+    const name = params.name || 'N/A';
+    document.getElementById('ea-name').textContent = name;
+
+    const postcode = params.postcode || 'N/A';
+    const fullAddress = `${name}<br>PO BOX 350<br>${postcode}`;
+    document.getElementById('address-text').innerHTML = fullAddress;
+
+  });
 </script>
 
 {% endblock %}
