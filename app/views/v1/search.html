@@ -22,7 +22,7 @@
       </div>
 
       <div class="nhsuk-hint" id="example-with-hint-text-hint">
-    You can use one or more search fields to find results
+    You can use one or more search fields to find results.
   </div>
 
       <div class="nhsuk-grid-row">
@@ -64,15 +64,33 @@
       <!-- No results message -->
       <p id="no-results-message" class="nhsuk-body" style="display: none;">No results found</p>
 
-      <table id="search-results-table" role="table" class="nhsuk-table-responsive" style="display: none;">
-        <thead role="rowgroup" class="nhsuk-table__head">
-          <tr role="row">
-            <th role="columnheader" scope="col">EA Reference</th>
-            <th role="columnheader" scope="col">Name</th>
-            <th role="columnheader" scope="col">Postcode</th>
-            <th role="columnheader" scope="col">Action</th>
-          </tr>
-        </thead>
+<style>
+  .sortable {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .sort-arrow {
+    margin-left: 5px;
+    font-size: 0.7em;
+  }
+</style>
+
+<table id="search-results-table" role="table" class="nhsuk-table-responsive" style="display: none;">
+  <thead role="rowgroup" class="nhsuk-table__head">
+    <tr role="row">
+      <th role="columnheader" scope="col" class="sortable" onclick="sortTable(0, this)">
+        EA Reference <span class="sort-arrow"></span>
+      </th>
+      <th role="columnheader" scope="col" class="sortable" onclick="sortTable(1, this)">
+        Name <span class="sort-arrow"></span>
+      </th>
+      <th role="columnheader" scope="col" class="sortable" onclick="sortTable(2, this)">
+        Postcode <span class="sort-arrow"></span>
+      </th>
+      <th role="columnheader" scope="col">Action</th>
+    </tr>
+  </thead>
  <tbody class="nhsuk-table__body">
           <tr>
             <td>0681</td>
@@ -285,7 +303,51 @@
       noResultsMessage.style.display = 'none';
       if (pagination) pagination.style.display = 'none';
     });
+    
   });
+</script>
+
+<script>
+  let currentSort = {
+    column: null,
+    ascending: true
+  };
+
+  function sortTable(columnIndex, headerElement) {
+    const table = document.getElementById("search-results-table");
+    const tbody = table.tBodies[0];
+    const rows = Array.from(tbody.rows);
+
+    // Toggle sort direction if same column, else reset
+    const isSameColumn = currentSort.column === columnIndex;
+    currentSort.ascending = isSameColumn ? !currentSort.ascending : true;
+    currentSort.column = columnIndex;
+
+    // Remove sort arrows from all headers
+    document.querySelectorAll('.sort-arrow').forEach(arrow => arrow.textContent = '');
+
+    // Set arrow on the current header
+    const arrowSpan = headerElement.querySelector('.sort-arrow');
+    arrowSpan.textContent = currentSort.ascending ? '▲' : '▼';
+
+    // Sort rows
+    rows.sort((a, b) => {
+      let cellA = a.cells[columnIndex].textContent.trim().toLowerCase();
+      let cellB = b.cells[columnIndex].textContent.trim().toLowerCase();
+
+      if (columnIndex === 0) { // EA Reference is numeric
+        cellA = parseInt(cellA, 10);
+        cellB = parseInt(cellB, 10);
+      }
+
+      if (cellA < cellB) return currentSort.ascending ? -1 : 1;
+      if (cellA > cellB) return currentSort.ascending ? 1 : -1;
+      return 0;
+    });
+
+    // Re-append sorted rows
+    rows.forEach(row => tbody.appendChild(row));
+  }
 </script>
 
 {% endblock %}
