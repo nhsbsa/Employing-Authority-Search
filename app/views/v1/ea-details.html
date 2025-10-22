@@ -17,13 +17,21 @@
     background-color: white;
     color: #005eb8;
     border: 1px solid #005eb8;
+    transition: background-color 0.3s, color 0.3s;
   }
 
   .copy-tag:hover {
     background-color: #005eb8; 
     color: white;
-    transition: background-color 0.3s, color 0.3s;
     cursor: pointer;
+  }
+
+  /* NHS Design System green for copied state */
+  .copy-tag.copied {
+    background-color: #007f3b;
+    color: white;
+    border-color: #007f3b;
+    cursor: default;
   }
 </style>
 
@@ -46,7 +54,7 @@
             <td><strong>EA reference number</strong></td>
             <td id="ea-ref-text">Loading...</td>
             <td>
-              <span class="nhsuk-tag copy-tag" role="button" tabindex="0" onclick="copyToClipboard('ea-ref-text')">Copy</span>
+              <span class="nhsuk-tag copy-tag" role="button" tabindex="0" onclick="copyToClipboard('ea-ref-text', this)">Copy</span>
             </td>
           </tr>
 
@@ -54,7 +62,7 @@
             <td><strong>Full address</strong></td>
             <td id="address-text">Loading...</td>
             <td>
-              <span class="nhsuk-tag copy-tag" role="button" tabindex="0" onclick="copyToClipboard('address-text')">Copy</span>
+              <span class="nhsuk-tag copy-tag" role="button" tabindex="0" onclick="copyToClipboard('address-text', this)">Copy</span>
             </td>
           </tr>
 
@@ -62,17 +70,17 @@
             <td><strong>Phone number</strong></td>
             <td id="phone-text">0333 0142884</td>
             <td>
-              <span class="nhsuk-tag copy-tag" role="button" tabindex="0" onclick="copyToClipboard('phone-text')">Copy</span>
+              <span class="nhsuk-tag copy-tag" role="button" tabindex="0" onclick="copyToClipboard('phone-text', this)">Copy</span>
             </td>
           </tr>
 
         </tbody>
       </table>
 
-          <!-- New Search Button -->
-    <div class="button-container">
-      <a href="search" class="nhsuk-button nhsuk-button--primary">New search</a>
-    </div>
+      <!-- New Search Button -->
+      <div class="button-container">
+        <a href="search" class="nhsuk-button nhsuk-button--primary">New search</a>
+      </div>
 
     </form>
   </div>
@@ -91,7 +99,7 @@
     return params;
   }
 
-  function copyToClipboard(elementId) {
+  function copyToClipboard(elementId, button) {
     const el = document.getElementById(elementId);
     if (!el) return;
 
@@ -101,6 +109,16 @@
     tempEl.select();
     document.execCommand('copy');
     document.body.removeChild(tempEl);
+
+    // Change button text and style
+    button.textContent = 'Copied';
+    button.classList.add('copied');
+
+    // Reset after 2 seconds
+    setTimeout(() => {
+      button.textContent = 'Copy';
+      button.classList.remove('copied');
+    }, 2000);
   }
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -115,7 +133,6 @@
     const postcode = params.postcode || 'N/A';
     const fullAddress = `${name}<br>PO BOX 350<br>${postcode}`;
     document.getElementById('address-text').innerHTML = fullAddress;
-
   });
 </script>
 
