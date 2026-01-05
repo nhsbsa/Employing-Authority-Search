@@ -21,7 +21,7 @@
   }
 
   .copy-tag:hover {
-    background-color: #005eb8; 
+    background-color: #005eb8;
     color: white;
     cursor: pointer;
   }
@@ -41,7 +41,7 @@
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-full">
-          <span class="nhsuk-caption-xl">Employing Authority details</span>
+          <span class="nhsuk-caption-xl">Employing Authority (EA) details</span>
           <h1 class="nhsuk-heading-l" id="ea-name">Loading...</h1>
         </div>
       </div>
@@ -54,7 +54,14 @@
             <td><strong>EA code</strong></td>
             <td id="ea-ref-text">Loading...</td>
             <td>
-              <span class="nhsuk-tag copy-tag" role="button" tabindex="0" onclick="copyToClipboard('ea-ref-text', this)">Copy</span>
+              <span
+                class="nhsuk-tag copy-tag"
+                role="button"
+                tabindex="0"
+                onclick="copyToClipboard('ea-ref-text', this)"
+              >
+                Copy
+              </span>
             </td>
           </tr>
 
@@ -62,7 +69,14 @@
             <td><strong>Address</strong></td>
             <td id="address-text">Loading...</td>
             <td>
-              <span class="nhsuk-tag copy-tag" role="button" tabindex="0" onclick="copyToClipboard('address-text', this)">Copy</span>
+              <span
+                class="nhsuk-tag copy-tag"
+                role="button"
+                tabindex="0"
+                onclick="copyToClipboard('address-text', this)"
+              >
+                Copy
+              </span>
             </td>
           </tr>
 
@@ -70,7 +84,14 @@
             <td><strong>Phone number</strong></td>
             <td id="phone-text">0333 0142884</td>
             <td>
-              <span class="nhsuk-tag copy-tag" role="button" tabindex="0" onclick="copyToClipboard('phone-text', this)">Copy</span>
+              <span
+                class="nhsuk-tag copy-tag"
+                role="button"
+                tabindex="0"
+                onclick="copyToClipboard('phone-text', this)"
+              >
+                Copy
+              </span>
             </td>
           </tr>
 
@@ -89,7 +110,7 @@
 <script>
   function getQueryParams() {
     const params = {};
-    location.search.substring(1).split('&').forEach(function(part) {
+    location.search.substring(1).split('&').forEach(function (part) {
       if (!part) return;
       const item = part.split('=');
       const key = decodeURIComponent(item[0]);
@@ -103,6 +124,7 @@
     const el = document.getElementById(elementId);
     if (!el) return;
 
+    // Copy text to clipboard
     const tempEl = document.createElement('textarea');
     tempEl.value = el.innerText || el.textContent;
     document.body.appendChild(tempEl);
@@ -110,15 +132,16 @@
     document.execCommand('copy');
     document.body.removeChild(tempEl);
 
-    // Change button text and style
+    // Reset all copy tags
+    const allCopyTags = document.querySelectorAll('.copy-tag');
+    allCopyTags.forEach(tag => {
+      tag.textContent = 'Copy';
+      tag.classList.remove('copied');
+    });
+
+    // Set clicked tag to "Copied"
     button.textContent = 'Copied';
     button.classList.add('copied');
-
-    // Reset after 2 seconds
-    setTimeout(() => {
-      button.textContent = 'Copy';
-      button.classList.remove('copied');
-    }, 2000);
   }
 
   document.addEventListener('DOMContentLoaded', () => {
