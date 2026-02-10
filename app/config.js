@@ -2,7 +2,7 @@
 
 module.exports = {
   // Service name
-  serviceName: 'Find an Employing Authority (EA)',
+  serviceName: 'Find an employing authority (EA)',
 
   // Port to run nodemon on locally
   port: 2000,
