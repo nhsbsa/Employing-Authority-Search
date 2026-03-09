@@ -1,11 +1,19 @@
-module.exports = function(req, res, next) {
+/**
+ * @param {typeof config} config
+ */
+module.exports =
+  (config) =>
+  /**
+   * @param {Request} req
+   * @param {Response} res
+   * @param {NextFunction} next
+   */
+  (req, res, next) => {
+    res.locals.serviceName = config.serviceName
+    next()
+  }
 
-  // You can set any additional local variables here.
-  // These will be made available to any views
-  //
-  // For example:
-  //
-  // req.locals.organisationName = 'NHS'
-
-  next()
-}
+/**
+ * @import { NextFunction, Request, Response } from 'express'
+ * @import config from './config.js'
+ */
