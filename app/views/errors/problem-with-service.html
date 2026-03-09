@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Sorry, there is a problem with the service"%}
+{% set hideBack = "true" %}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-u-reading-width">
+      <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">{{pageTitle}}</h1>
+
+      <p>
+        Try again later.
+      </p>
+
+      <p>
+        We may not have saved the details you entered. When the service is available, you may have to start again.
+      </p>
+
+        <p>If you continue to have this problem or have an urgent query, contact the NHS Pensions team:</p> 
+    
+        <p>
+          <a class="nhsuk-link" target="_blank" href="https://www.nhsbsa.nhs.uk/member-hub/contact-nhs-pensions-members">NHS Pensions - active and deferred members</a><br/>
+          <a class="nhsuk-link" target="_blank" href="https://www.nhsbsa.nhs.uk/pensioner-hub/contact-nhs-pensions-pensioners">Contact NHS Pensions - pensioner members</a><br/>
+          <a class="nhsuk-link" target="_blank" href="https://www.nhsbsa.nhs.uk/employer-hub/contact-nhs-pensions-employers">Contact NHS Pensions - employers</a>
+        </p>
+    </div>
+  </div>
+
+</div>
+{% endblock %}
