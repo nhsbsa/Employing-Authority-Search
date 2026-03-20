@@ -1,353 +1,387 @@
-<!-- Extends the layout from /views/layout.html -->
 {% extends 'layout.html' %}
 
-<!-- Set the page title -->
 {% block pageTitle %}
   {{ serviceName }}
-{% endblock %}
-
-<!-- For adding a breadcrumb -->
-{% block beforeContent %}
 {% endblock %}
 
 {% block content %}
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
+
     <form action="search" method="post">
 
-      <div class="nhsuk-grid-row">
-        <div class="nhsuk-grid-column-two-thirds">
-          <h1 class="nhsuk-heading-l">Search for an employing authority (EA)</h1>
-        </div>
-      </div>
+      <h1 class="nhsuk-heading-l">Search for an employing authority (EA)</h1>
 
-      <div class="nhsuk-hint" id="example-with-hint-text-hint">
-    You can use one or more fields.
-  </div>
+      <div class="nhsuk-hint">You can use one or more fields.</div>
 
       <div class="nhsuk-grid-row">
+
         <div class="nhsuk-grid-column-one-third">
-          <div class="nhsuk-form-group">
-            <label class="nhsuk-label" for="ea-reference">EA code</label>
-            <input class="nhsuk-input nhsuk-input--width-20" id="ea-reference" name="ea-reference" type="text">
-          </div>
+          <label class="nhsuk-label" for="ea-reference">EA code</label>
+          <input class="nhsuk-input" id="ea-reference" type="text">
         </div>
 
         <div class="nhsuk-grid-column-one-third">
-          <div class="nhsuk-form-group">
-            <label class="nhsuk-label" for="name">EA name</label>
-            <input class="nhsuk-input nhsuk-input--width-20" id="name" name="name" type="text">
-          </div>
+          <label class="nhsuk-label" for="name">EA name</label>
+          <input class="nhsuk-input" id="name" type="text">
         </div>
 
         <div class="nhsuk-grid-column-one-third">
-          <div class="nhsuk-form-group">
-            <label class="nhsuk-label" for="postcode">Postcode</label>
-            <input class="nhsuk-input nhsuk-input--width-5" id="postcode" name="postcode" type="text">
-          </div>
+          <label class="nhsuk-label" for="postcode">Postcode</label>
+          <input class="nhsuk-input" id="postcode" type="text">
         </div>
+
       </div>
 
-      <!-- Reset Button -->
-      <div class="nhsuk-grid-row">
-        <div class="nhsuk-grid-column-two-thirds">
-          <button class="nhsuk-button" type="submit">Search</button>
-          <button class="nhsuk-button nhsuk-button--secondary" type="button" id="clear-search" style="margin-left: 10px;">
-            Reset
-          </button>
-        </div>
-      </div>
+      <br>
 
-      <!-- Search results header -->
-      <h2 id="search-results-heading" class="nhsuk-heading-l nhsuk-u-margin-top-5" style="display: none;">Search results</h2>
+      <button class="nhsuk-button" type="submit">Search</button>
+      <button class="nhsuk-button nhsuk-button--secondary" type="button" id="clear-search">Reset</button>
 
-      <!-- No results message -->
-      <p id="no-results-message" class="nhsuk-body" style="display: none;">No results found</p>
+      <h2 id="search-results-heading" style="display:none;">Search results</h2>
+      <p id="no-results-message" style="display:none;">No results found</p>
 
-<style>
-  .sortable {
-    cursor: pointer;
-    user-select: none;
-  }
+      <!-- TABLE (ALL ROWS INCLUDED) -->
+      <table id="search-results-table" class="nhsuk-table-responsive" style="display:none;">
+        <tbody>
 
-  .sort-arrow {
-    margin-left: 5px;
-    font-size: 0.7em;
-  }
-</style>
+          <tr><td>0681</td><td>NHS Dorset Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0681&name=NHS%20Dorset%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0682</td><td>NHS Buckinghamshire, Oxfordshire and Berkshire West Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0682&name=NHS%20Buckinghamshire,%20Oxfordshire%20and%20Berkshire%20West%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0683</td><td>NHS Gloucestershire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0683&name=NHS%20Gloucestershire%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0684</td><td>NHS Cornwall and the Isles of Scilly Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0684&name=NHS%20Cornwall%20and%20the%20Isles%20of%20Scilly%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0685</td><td>NHS Somerset Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0685&name=NHS%20Somerset%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0686</td><td>NHS Hampshire and Isle of Wight Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0686&name=NHS%20Hampshire%20and%20Isle%20of%20Wight%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0687</td><td>NHS Sussex Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0687&name=NHS%20Sussex%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0689</td><td>NHS Bath and North East Somerset, Swindon and Wiltshire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0689&name=NHS%20Bath%20and%20North%20East%20Somerset,%20Swindon%20and%20Wiltshire%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0690</td><td>NHS Bristol, North Somerset and South Gloucestershire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0690&name=NHS%20Bristol,%20North%20Somerset%20and%20South%20Gloucestershire%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0693</td><td>NHS Surrey Heartlands Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0693&name=NHS%20Surrey%20Heartlands%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0695</td><td>NHS Devon Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0695&name=NHS%20Devon%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0701</td><td>Great Ormond Street Hospital for Children NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0701&name=Great%20Ormond%20Street%20Hospital%20for%20Children%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0704</td><td>Moorfields Eye Hospital NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0704&name=Moorfields%20Eye%20Hospital%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0705</td><td>South London and Maudsley NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0705&name=South%20London%20and%20Maudsley%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0706</td><td>London North West University Healthcare NHS Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0706&name=London%20North%20West%20University%20Healthcare%20NHS%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0707</td><td>Central and North West London NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0707&name=Central%20and%20North%20West%20London%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0708</td><td>Hertfordshire Community NHS Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0708&name=Hertfordshire%20Community%20NHS%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0709</td><td>East London NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0709&name=East%20London%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0710</td><td>North East London NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0710&name=North%20East%20London%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0711</td><td>Oxleas NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0711&name=Oxleas%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+                    <tr><td>0681</td><td>NHS Dorset Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0681&name=NHS%20Dorset%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0682</td><td>NHS Buckinghamshire, Oxfordshire and Berkshire West Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0682&name=NHS%20Buckinghamshire,%20Oxfordshire%20and%20Berkshire%20West%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0683</td><td>NHS Gloucestershire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0683&name=NHS%20Gloucestershire%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0684</td><td>NHS Cornwall and the Isles of Scilly Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0684&name=NHS%20Cornwall%20and%20the%20Isles%20of%20Scilly%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0685</td><td>NHS Somerset Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0685&name=NHS%20Somerset%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0686</td><td>NHS Hampshire and Isle of Wight Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0686&name=NHS%20Hampshire%20and%20Isle%20of%20Wight%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0687</td><td>NHS Sussex Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0687&name=NHS%20Sussex%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0689</td><td>NHS Bath and North East Somerset, Swindon and Wiltshire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0689&name=NHS%20Bath%20and%20North%20East%20Somerset,%20Swindon%20and%20Wiltshire%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0690</td><td>NHS Bristol, North Somerset and South Gloucestershire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0690&name=NHS%20Bristol,%20North%20Somerset%20and%20South%20Gloucestershire%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0693</td><td>NHS Surrey Heartlands Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0693&name=NHS%20Surrey%20Heartlands%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0695</td><td>NHS Devon Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0695&name=NHS%20Devon%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0701</td><td>Great Ormond Street Hospital for Children NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0701&name=Great%20Ormond%20Street%20Hospital%20for%20Children%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0704</td><td>Moorfields Eye Hospital NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0704&name=Moorfields%20Eye%20Hospital%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0705</td><td>South London and Maudsley NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0705&name=South%20London%20and%20Maudsley%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0706</td><td>London North West University Healthcare NHS Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0706&name=London%20North%20West%20University%20Healthcare%20NHS%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0707</td><td>Central and North West London NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0707&name=Central%20and%20North%20West%20London%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0708</td><td>Hertfordshire Community NHS Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0708&name=Hertfordshire%20Community%20NHS%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0709</td><td>East London NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0709&name=East%20London%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0710</td><td>North East London NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0710&name=North%20East%20London%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0711</td><td>Oxleas NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0711&name=Oxleas%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+                    <tr><td>0681</td><td>NHS Dorset Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0681&name=NHS%20Dorset%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0682</td><td>NHS Buckinghamshire, Oxfordshire and Berkshire West Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0682&name=NHS%20Buckinghamshire,%20Oxfordshire%20and%20Berkshire%20West%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0683</td><td>NHS Gloucestershire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0683&name=NHS%20Gloucestershire%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0684</td><td>NHS Cornwall and the Isles of Scilly Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0684&name=NHS%20Cornwall%20and%20the%20Isles%20of%20Scilly%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0685</td><td>NHS Somerset Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0685&name=NHS%20Somerset%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0686</td><td>NHS Hampshire and Isle of Wight Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0686&name=NHS%20Hampshire%20and%20Isle%20of%20Wight%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0687</td><td>NHS Sussex Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0687&name=NHS%20Sussex%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0689</td><td>NHS Bath and North East Somerset, Swindon and Wiltshire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0689&name=NHS%20Bath%20and%20North%20East%20Somerset,%20Swindon%20and%20Wiltshire%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0690</td><td>NHS Bristol, North Somerset and South Gloucestershire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0690&name=NHS%20Bristol,%20North%20Somerset%20and%20South%20Gloucestershire%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0693</td><td>NHS Surrey Heartlands Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0693&name=NHS%20Surrey%20Heartlands%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0695</td><td>NHS Devon Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0695&name=NHS%20Devon%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0701</td><td>Great Ormond Street Hospital for Children NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0701&name=Great%20Ormond%20Street%20Hospital%20for%20Children%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0704</td><td>Moorfields Eye Hospital NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0704&name=Moorfields%20Eye%20Hospital%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0705</td><td>South London and Maudsley NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0705&name=South%20London%20and%20Maudsley%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0706</td><td>London North West University Healthcare NHS Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0706&name=London%20North%20West%20University%20Healthcare%20NHS%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0707</td><td>Central and North West London NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0707&name=Central%20and%20North%20West%20London%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0708</td><td>Hertfordshire Community NHS Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0708&name=Hertfordshire%20Community%20NHS%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0709</td><td>East London NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0709&name=East%20London%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0710</td><td>North East London NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0710&name=North%20East%20London%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0711</td><td>Oxleas NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0711&name=Oxleas%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+                    <tr><td>0681</td><td>NHS Dorset Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0681&name=NHS%20Dorset%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0682</td><td>NHS Buckinghamshire, Oxfordshire and Berkshire West Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0682&name=NHS%20Buckinghamshire,%20Oxfordshire%20and%20Berkshire%20West%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0683</td><td>NHS Gloucestershire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0683&name=NHS%20Gloucestershire%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0684</td><td>NHS Cornwall and the Isles of Scilly Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0684&name=NHS%20Cornwall%20and%20the%20Isles%20of%20Scilly%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0685</td><td>NHS Somerset Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0685&name=NHS%20Somerset%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0686</td><td>NHS Hampshire and Isle of Wight Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0686&name=NHS%20Hampshire%20and%20Isle%20of%20Wight%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0687</td><td>NHS Sussex Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0687&name=NHS%20Sussex%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0689</td><td>NHS Bath and North East Somerset, Swindon and Wiltshire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0689&name=NHS%20Bath%20and%20North%20East%20Somerset,%20Swindon%20and%20Wiltshire%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0690</td><td>NHS Bristol, North Somerset and South Gloucestershire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0690&name=NHS%20Bristol,%20North%20Somerset%20and%20South%20Gloucestershire%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0693</td><td>NHS Surrey Heartlands Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0693&name=NHS%20Surrey%20Heartlands%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0695</td><td>NHS Devon Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0695&name=NHS%20Devon%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0701</td><td>Great Ormond Street Hospital for Children NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0701&name=Great%20Ormond%20Street%20Hospital%20for%20Children%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0704</td><td>Moorfields Eye Hospital NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0704&name=Moorfields%20Eye%20Hospital%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0705</td><td>South London and Maudsley NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0705&name=South%20London%20and%20Maudsley%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0706</td><td>London North West University Healthcare NHS Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0706&name=London%20North%20West%20University%20Healthcare%20NHS%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0707</td><td>Central and North West London NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0707&name=Central%20and%20North%20West%20London%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0708</td><td>Hertfordshire Community NHS Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0708&name=Hertfordshire%20Community%20NHS%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0709</td><td>East London NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0709&name=East%20London%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0710</td><td>North East London NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0710&name=North%20East%20London%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0711</td><td>Oxleas NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0711&name=Oxleas%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+                    <tr><td>0681</td><td>NHS Dorset Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0681&name=NHS%20Dorset%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0682</td><td>NHS Buckinghamshire, Oxfordshire and Berkshire West Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0682&name=NHS%20Buckinghamshire,%20Oxfordshire%20and%20Berkshire%20West%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0683</td><td>NHS Gloucestershire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0683&name=NHS%20Gloucestershire%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0684</td><td>NHS Cornwall and the Isles of Scilly Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0684&name=NHS%20Cornwall%20and%20the%20Isles%20of%20Scilly%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0685</td><td>NHS Somerset Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0685&name=NHS%20Somerset%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0686</td><td>NHS Hampshire and Isle of Wight Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0686&name=NHS%20Hampshire%20and%20Isle%20of%20Wight%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0687</td><td>NHS Sussex Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0687&name=NHS%20Sussex%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0689</td><td>NHS Bath and North East Somerset, Swindon and Wiltshire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0689&name=NHS%20Bath%20and%20North%20East%20Somerset,%20Swindon%20and%20Wiltshire%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0690</td><td>NHS Bristol, North Somerset and South Gloucestershire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0690&name=NHS%20Bristol,%20North%20Somerset%20and%20South%20Gloucestershire%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0693</td><td>NHS Surrey Heartlands Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0693&name=NHS%20Surrey%20Heartlands%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0695</td><td>NHS Devon Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0695&name=NHS%20Devon%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0701</td><td>Great Ormond Street Hospital for Children NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0701&name=Great%20Ormond%20Street%20Hospital%20for%20Children%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0704</td><td>Moorfields Eye Hospital NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0704&name=Moorfields%20Eye%20Hospital%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0705</td><td>South London and Maudsley NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0705&name=South%20London%20and%20Maudsley%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0706</td><td>London North West University Healthcare NHS Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0706&name=London%20North%20West%20University%20Healthcare%20NHS%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0707</td><td>Central and North West London NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0707&name=Central%20and%20North%20West%20London%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0708</td><td>Hertfordshire Community NHS Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0708&name=Hertfordshire%20Community%20NHS%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0709</td><td>East London NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0709&name=East%20London%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0710</td><td>North East London NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0710&name=North%20East%20London%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0711</td><td>Oxleas NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0711&name=Oxleas%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+                    <tr><td>0681</td><td>NHS Dorset Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0681&name=NHS%20Dorset%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0682</td><td>NHS Buckinghamshire, Oxfordshire and Berkshire West Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0682&name=NHS%20Buckinghamshire,%20Oxfordshire%20and%20Berkshire%20West%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0683</td><td>NHS Gloucestershire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0683&name=NHS%20Gloucestershire%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0684</td><td>NHS Cornwall and the Isles of Scilly Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0684&name=NHS%20Cornwall%20and%20the%20Isles%20of%20Scilly%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0685</td><td>NHS Somerset Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0685&name=NHS%20Somerset%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0686</td><td>NHS Hampshire and Isle of Wight Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0686&name=NHS%20Hampshire%20and%20Isle%20of%20Wight%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0687</td><td>NHS Sussex Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0687&name=NHS%20Sussex%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0689</td><td>NHS Bath and North East Somerset, Swindon and Wiltshire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0689&name=NHS%20Bath%20and%20North%20East%20Somerset,%20Swindon%20and%20Wiltshire%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0690</td><td>NHS Bristol, North Somerset and South Gloucestershire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0690&name=NHS%20Bristol,%20North%20Somerset%20and%20South%20Gloucestershire%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0693</td><td>NHS Surrey Heartlands Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0693&name=NHS%20Surrey%20Heartlands%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0695</td><td>NHS Devon Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0695&name=NHS%20Devon%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0701</td><td>Great Ormond Street Hospital for Children NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0701&name=Great%20Ormond%20Street%20Hospital%20for%20Children%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0704</td><td>Moorfields Eye Hospital NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0704&name=Moorfields%20Eye%20Hospital%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0705</td><td>South London and Maudsley NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0705&name=South%20London%20and%20Maudsley%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0706</td><td>London North West University Healthcare NHS Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0706&name=London%20North%20West%20University%20Healthcare%20NHS%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0707</td><td>Central and North West London NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0707&name=Central%20and%20North%20West%20London%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0708</td><td>Hertfordshire Community NHS Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0708&name=Hertfordshire%20Community%20NHS%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0709</td><td>East London NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0709&name=East%20London%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0710</td><td>North East London NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0710&name=North%20East%20London%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0711</td><td>Oxleas NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0711&name=Oxleas%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+                    <tr><td>0681</td><td>NHS Dorset Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0681&name=NHS%20Dorset%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0682</td><td>NHS Buckinghamshire, Oxfordshire and Berkshire West Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0682&name=NHS%20Buckinghamshire,%20Oxfordshire%20and%20Berkshire%20West%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0683</td><td>NHS Gloucestershire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0683&name=NHS%20Gloucestershire%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0684</td><td>NHS Cornwall and the Isles of Scilly Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0684&name=NHS%20Cornwall%20and%20the%20Isles%20of%20Scilly%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0685</td><td>NHS Somerset Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0685&name=NHS%20Somerset%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0686</td><td>NHS Hampshire and Isle of Wight Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0686&name=NHS%20Hampshire%20and%20Isle%20of%20Wight%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0687</td><td>NHS Sussex Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0687&name=NHS%20Sussex%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0689</td><td>NHS Bath and North East Somerset, Swindon and Wiltshire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0689&name=NHS%20Bath%20and%20North%20East%20Somerset,%20Swindon%20and%20Wiltshire%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0690</td><td>NHS Bristol, North Somerset and South Gloucestershire Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0690&name=NHS%20Bristol,%20North%20Somerset%20and%20South%20Gloucestershire%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0693</td><td>NHS Surrey Heartlands Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0693&name=NHS%20Surrey%20Heartlands%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0695</td><td>NHS Devon Integrated Care Board (PCSE)</td><td>DL1 9QN</td><td><a href="ea-details?ref=0695&name=NHS%20Devon%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td></tr>
+          <tr><td>0701</td><td>Great Ormond Street Hospital for Children NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0701&name=Great%20Ormond%20Street%20Hospital%20for%20Children%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0704</td><td>Moorfields Eye Hospital NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0704&name=Moorfields%20Eye%20Hospital%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0705</td><td>South London and Maudsley NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0705&name=South%20London%20and%20Maudsley%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0706</td><td>London North West University Healthcare NHS Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0706&name=London%20North%20West%20University%20Healthcare%20NHS%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0707</td><td>Central and North West London NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0707&name=Central%20and%20North%20West%20London%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0708</td><td>Hertfordshire Community NHS Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0708&name=Hertfordshire%20Community%20NHS%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0709</td><td>East London NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0709&name=East%20London%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0710</td><td>North East London NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0710&name=North%20East%20London%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
+          <tr><td>0711</td><td>Oxleas NHS Foundation Trust</td><td>LS11 0EA</td><td><a href="ea-details?ref=0711&name=Oxleas%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td></tr>
 
-<table id="search-results-table" role="table" class="nhsuk-table-responsive" style="display: none;">
-  <thead role="rowgroup" class="nhsuk-table__head">
-    <tr role="row">
-      <th role="columnheader" scope="col" class="sortable" onclick="sortTable(0, this)">
-        EA code <span class="sort-arrow"></span>
-      </th>
-      <th role="columnheader" scope="col" class="sortable" onclick="sortTable(1, this)">
-        EA name <span class="sort-arrow"></span>
-      </th>
-      <th role="columnheader" scope="col" class="sortable" onclick="sortTable(2, this)">
-        Postcode <span class="sort-arrow"></span>
-      </th>
-      <th role="columnheader" scope="col">Action</th>
-    </tr>
-  </thead>
- <tbody class="nhsuk-table__body">
-          <tr>
-            <td>0681</td>
-            <td>NHS Dorset Integrated Care Board (PCSE)</td>
-            <td>DL1 9QN</td>
-            <td><a href="ea-details?ref=0681&name=NHS%20Dorset%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td>
-          </tr>
-          <tr>
-            <td>0682</td>
-            <td>NHS Buckinghamshire, Oxfordshire and Berkshire West Integrated Care Board (PCSE)</td>
-            <td>DL1 9QN</td>
-            <td><a href="ea-details?ref=0682&name=NHS%20Buckinghamshire,%20Oxfordshire%20and%20Berkshire%20West%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td>
-          </tr>
-          <tr>
-            <td>0683</td>
-            <td>NHS Gloucestershire Integrated Care Board (PCSE)</td>
-            <td>DL1 9QN</td>
-            <td><a href="ea-details?ref=0683&name=NHS%20Gloucestershire%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td>
-          </tr>
-          <tr>
-            <td>0684</td>
-            <td>NHS Cornwall and the Isles of Scilly Integrated Care Board (PCSE)</td>
-            <td>DL1 9QN</td>
-            <td><a href="ea-details?ref=0684&name=NHS%20Cornwall%20and%20the%20Isles%20of%20Scilly%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td>
-          </tr>
-          <tr>
-            <td>0685</td>
-            <td>NHS Somerset Integrated Care Board (PCSE)</td>
-            <td>DL1 9QN</td>
-            <td><a href="ea-details?ref=0685&name=NHS%20Somerset%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td>
-          </tr>
-          <tr>
-            <td>0686</td>
-            <td>NHS Hampshire and Isle of Wight Integrated Care Board (PCSE)</td>
-            <td>DL1 9QN</td>
-            <td><a href="ea-details?ref=0686&name=NHS%20Hampshire%20and%20Isle%20of%20Wight%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td>
-          </tr>
-          <tr>
-            <td>0687</td>
-            <td>NHS Sussex Integrated Care Board (PCSE)</td>
-            <td>DL1 9QN</td>
-            <td><a href="ea-details?ref=0687&name=NHS%20Sussex%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td>
-          </tr>
-          <tr>
-            <td>0689</td>
-            <td>NHS Bath and North East Somerset, Swindon and Wiltshire Integrated Care Board (PCSE)</td>
-            <td>DL1 9QN</td>
-            <td><a href="ea-details?ref=0689&name=NHS%20Bath%20and%20North%20East%20Somerset,%20Swindon%20and%20Wiltshire%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td>
-          </tr>
-          <tr>
-            <td>0690</td>
-            <td>NHS Bristol, North Somerset and South Gloucestershire Integrated Care Board (PCSE)</td>
-            <td>DL1 9QN</td>
-            <td><a href="ea-details?ref=0690&name=NHS%20Bristol,%20North%20Somerset%20and%20South%20Gloucestershire%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td>
-          </tr>
-          <tr>
-            <td>0693</td>
-            <td>NHS Surrey Heartlands Integrated Care Board (PCSE)</td>
-            <td>DL1 9QN</td>
-            <td><a href="ea-details?ref=0693&name=NHS%20Surrey%20Heartlands%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td>
-          </tr>
-          <tr>
-            <td>0695</td>
-            <td>NHS Devon Integrated Care Board (PCSE)</td>
-            <td>DL1 9QN</td>
-            <td><a href="ea-details?ref=0695&name=NHS%20Devon%20Integrated%20Care%20Board%20(PCSE)&postcode=DL1%209QN">View</a></td>
-          </tr>
-          <tr>
-            <td>0701</td>
-            <td>Great Ormond Street Hospital for Children NHS Foundation Trust</td>
-            <td>LS11 0EA</td>
-            <td><a href="ea-details?ref=0701&name=Great%20Ormond%20Street%20Hospital%20for%20Children%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td>
-          </tr>
-          <tr>
-            <td>0704</td>
-            <td>Moorfields Eye Hospital NHS Foundation Trust</td>
-            <td>LS11 0EA</td>
-            <td><a href="ea-details?ref=0704&name=Moorfields%20Eye%20Hospital%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td>
-          </tr>
-          <tr>
-            <td>0705</td>
-            <td>South London and Maudsley NHS Foundation Trust</td>
-            <td>LS11 0EA</td>
-            <td><a href="ea-details?ref=0705&name=South%20London%20and%20Maudsley%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td>
-          </tr>
-          <tr>
-            <td>0706</td>
-            <td>London North West University Healthcare NHS Trust</td>
-            <td>LS11 0EA</td>
-            <td><a href="ea-details?ref=0706&name=London%20North%20West%20University%20Healthcare%20NHS%20Trust&postcode=LS11%200EA">View</a></td>
-          </tr>
-          <tr>
-            <td>0707</td>
-            <td>Central and North West London NHS Foundation Trust</td>
-            <td>LS11 0EA</td>
-            <td><a href="ea-details?ref=0707&name=Central%20and%20North%20West%20London%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td>
-          </tr>
-          <tr>
-            <td>0708</td>
-            <td>Hertfordshire Community NHS Trust</td>
-            <td>LS11 0EA</td>
-            <td><a href="ea-details?ref=0708&name=Hertfordshire%20Community%20NHS%20Trust&postcode=LS11%200EA">View</a></td>
-          </tr>
-          <tr>
-            <td>0709</td>
-            <td>East London NHS Foundation Trust</td>
-            <td>LS11 0EA</td>
-            <td><a href="ea-details?ref=0709&name=East%20London%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td>
-          </tr>
-          <tr>
-            <td>0710</td>
-            <td>North East London NHS Foundation Trust</td>
-            <td>LS11 0EA</td>
-            <td><a href="ea-details?ref=0710&name=North%20East%20London%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td>
-          </tr>
-          <tr>
-            <td>0711</td>
-            <td>Oxleas NHS Foundation Trust</td>
-            <td>LS11 0EA</td>
-            <td><a href="ea-details?ref=0711&name=Oxleas%20NHS%20Foundation%20Trust&postcode=LS11%200EA">View</a></td>
-          </tr>
         </tbody>
       </table>
 
-      <!-- Optional pagination (commented out) -->
-      <!--
-      <nav class="nhsuk-pagination" id="search-pagination" style="display: none;" role="navigation" aria-label="Pagination">
-        <ul class="nhsuk-list nhsuk-pagination__list">
-          <li class="nhsuk-pagination-item--previous">
-            <a class="nhsuk-pagination__link" href="#" aria-label="Previous page">
-              <span class="nhsuk-pagination__title">Previous</span>
-              <span class="nhsuk-u-visually-hidden">:</span>
-              <span class="nhsuk-pagination__page">1 of 3</span>
-            </a>
-          </li>
-          <li class="nhsuk-pagination-item--next">
-            <a class="nhsuk-pagination__link" href="#" aria-label="Next page">
-              <span class="nhsuk-pagination__title">Next</span>
-              <span class="nhsuk-u-visually-hidden">:</span>
-              <span class="nhsuk-pagination__page">Page 3</span>
-            </a>
-          </li>
-        </ul>
+      <!-- PAGINATION -->
+      <nav id="pagination" class="nhsuk-pagination nhsuk-pagination--numbered"
+           role="navigation" aria-label="Pagination" style="display:none;">
+
+        <a href="#" id="prevPage" class="nhsuk-pagination__previous"
+           onclick="changePage(-1); return false;">Previous</a>
+
+        <ul class="nhsuk-pagination__list" id="paginationList"></ul>
+
+        <a href="#" id="nextPage" class="nhsuk-pagination__next"
+           onclick="changePage(1); return false;">Next</a>
+
       </nav>
-      -->
 
     </form>
   </div>
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('form');
-    const table = document.getElementById('search-results-table');
-    const heading = document.getElementById('search-results-heading');
-    const noResultsMessage = document.getElementById('no-results-message');
-    const pagination = document.getElementById('search-pagination');
+const rowsPerPage = 10;
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
+let currentPage = 1;
+let filteredRows = [];
 
-      const eaRefInput = document.getElementById('ea-reference').value.trim().toLowerCase();
-      const nameInput = document.getElementById('name').value.trim().toLowerCase();
-      const postcodeInput = document.getElementById('postcode').value.trim().toLowerCase();
+document.addEventListener('DOMContentLoaded', () => {
 
-      const rows = table.querySelectorAll('tbody tr');
-      let visibleRowsCount = 0;
+  const form = document.querySelector('form');
+  const table = document.getElementById('search-results-table');
+  const heading = document.getElementById('search-results-heading');
+  const noResults = document.getElementById('no-results-message');
+  const pagination = document.getElementById('pagination');
 
-      rows.forEach(row => {
-        const cells = row.querySelectorAll('td');
-        const eaRef = cells[0].textContent.trim().toLowerCase();
-        const name = cells[1].textContent.trim().toLowerCase();
-        const postcode = cells[2].textContent.trim().toLowerCase();
+  const allRows = Array.from(table.querySelectorAll('tbody tr'));
 
-        const matchesEARef = !eaRefInput || eaRef.includes(eaRefInput);
-        const matchesName = !nameInput || name.includes(nameInput);
-        const matchesPostcode = !postcodeInput || postcode.includes(postcodeInput);
+  // ---------------- SEARCH (UNCHANGED BEHAVIOUR) ----------------
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-        if (matchesEARef && matchesName && matchesPostcode) {
-          row.style.display = '';
-          visibleRowsCount++;
-        } else {
-          row.style.display = 'none';
-        }
-      });
+    currentPage = 1;
+    filteredRows = [];
 
-      if (visibleRowsCount > 0) {
-        table.style.display = 'table';
-        heading.style.display = 'block';
-        noResultsMessage.style.display = 'none';
-        if (pagination) pagination.style.display = 'block';
+    const code = document.getElementById('ea-reference').value.toLowerCase().trim();
+    const name = document.getElementById('name').value.toLowerCase().trim();
+    const postcode = document.getElementById('postcode').value.toLowerCase().trim();
+
+    let visible = 0;
+
+    allRows.forEach(row => {
+      const cells = row.querySelectorAll('td');
+
+      const matchCode = !code || cells[0].textContent.toLowerCase().includes(code);
+      const matchName = !name || cells[1].textContent.toLowerCase().includes(name);
+      const matchPostcode = !postcode || cells[2].textContent.toLowerCase().includes(postcode);
+
+      if (matchCode && matchName && matchPostcode) {
+        filteredRows.push(row);
+        visible++;
       } else {
-        table.style.display = 'none';
-        heading.style.display = 'block';
-        noResultsMessage.style.display = 'block';
-        if (pagination) pagination.style.display = 'none';
+        row.style.display = 'none';
       }
     });
 
-    // Clear search button behavior
-    document.getElementById('clear-search').addEventListener('click', function(e) {
-      e.preventDefault();
-
-      document.getElementById('ea-reference').value = '';
-      document.getElementById('name').value = '';
-      document.getElementById('postcode').value = '';
-
+    if (visible === 0) {
       table.style.display = 'none';
-      heading.style.display = 'none';
-      noResultsMessage.style.display = 'none';
-      if (pagination) pagination.style.display = 'none';
-    });
-    
+      heading.style.display = 'block';
+      noResults.style.display = 'block';
+      pagination.style.display = 'none';
+      return;
+    }
+
+    table.style.display = 'table';
+    heading.style.display = 'block';
+    noResults.style.display = 'none';
+
+    renderPage();
+    renderPagination();
   });
-</script>
 
-<script>
-  let currentSort = {
-    column: null,
-    ascending: true
-  };
+  document.getElementById('clear-search').addEventListener('click', () => location.reload());
+});
 
-  function sortTable(columnIndex, headerElement) {
-    const table = document.getElementById("search-results-table");
-    const tbody = table.tBodies[0];
-    const rows = Array.from(tbody.rows);
+// ---------------- PAGINATION ----------------
 
-    // Toggle sort direction if same column, else reset
-    const isSameColumn = currentSort.column === columnIndex;
-    currentSort.ascending = isSameColumn ? !currentSort.ascending : true;
-    currentSort.column = columnIndex;
+function renderPage() {
 
-    // Remove sort arrows from all headers
-    document.querySelectorAll('.sort-arrow').forEach(arrow => arrow.textContent = '');
+  const start = (currentPage - 1) * rowsPerPage;
+  const end = start + rowsPerPage;
 
-    // Set arrow on the current header
-    const arrowSpan = headerElement.querySelector('.sort-arrow');
-    arrowSpan.textContent = currentSort.ascending ? '▲' : '▼';
+  filteredRows.forEach((row, i) => {
+    row.style.display = (i >= start && i < end) ? '' : 'none';
+  });
 
-    // Sort rows
-    rows.sort((a, b) => {
-      let cellA = a.cells[columnIndex].textContent.trim().toLowerCase();
-      let cellB = b.cells[columnIndex].textContent.trim().toLowerCase();
+  updateNav();
+}
 
-      if (columnIndex === 0) { // EA Reference is numeric
-        cellA = parseInt(cellA, 10);
-        cellB = parseInt(cellB, 10);
-      }
+function renderPagination() {
 
-      if (cellA < cellB) return currentSort.ascending ? -1 : 1;
-      if (cellA > cellB) return currentSort.ascending ? 1 : -1;
-      return 0;
-    });
+  const list = document.getElementById('paginationList');
+  const pagination = document.getElementById('pagination');
+  const totalPages = Math.ceil(filteredRows.length / rowsPerPage);
 
-    // Re-append sorted rows
-    rows.forEach(row => tbody.appendChild(row));
+  if (filteredRows.length <= rowsPerPage) {
+    pagination.style.display = 'none';
+    return;
   }
+
+  pagination.style.display = 'flex';
+  list.innerHTML = '';
+
+  const pages = getPages(totalPages);
+
+  pages.forEach(p => {
+
+    if (p === '...') {
+      const li = document.createElement('li');
+      li.className = 'nhsuk-pagination__item nhsuk-pagination__item--ellipsis';
+      li.innerHTML = '&ctdot;';
+      list.appendChild(li);
+      return;
+    }
+
+    const li = document.createElement('li');
+    li.className = 'nhsuk-pagination__item' +
+      (p === currentPage ? ' nhsuk-pagination__item--current' : '');
+
+    li.innerHTML = `
+      <a class="nhsuk-pagination__link"
+         href="#"
+         onclick="goToPage(${p}); return false;"
+         aria-current="${p === currentPage ? 'page' : 'false'}">
+        ${p}
+      </a>
+    `;
+
+    list.appendChild(li);
+  });
+
+  updateNav();
+}
+
+function getPages(total) {
+
+  const pages = [];
+
+  if (total <= 7) {
+    for (let i = 1; i <= total; i++) pages.push(i);
+    return pages;
+  }
+
+  pages.push(1);
+
+  if (currentPage > 3) pages.push('...');
+
+  const start = Math.max(2, currentPage - 1);
+  const end = Math.min(total - 1, currentPage + 1);
+
+  for (let i = start; i <= end; i++) pages.push(i);
+
+  if (currentPage < total - 2) pages.push('...');
+
+  pages.push(total);
+
+  return pages;
+}
+
+function changePage(direction) {
+  const totalPages = Math.ceil(filteredRows.length / rowsPerPage);
+
+  currentPage += direction;
+
+  if (currentPage < 1) currentPage = 1;
+  if (currentPage > totalPages) currentPage = totalPages;
+
+  renderPage();
+  renderPagination();
+}
+
+function goToPage(page) {
+  currentPage = page;
+  renderPage();
+  renderPagination();
+}
+
+function updateNav() {
+
+  const totalPages = Math.ceil(filteredRows.length / rowsPerPage);
+
+  document.getElementById('prevPage').style.display =
+    currentPage === 1 ? 'none' : 'flex';
+
+  document.getElementById('nextPage').style.display =
+    currentPage === totalPages ? 'none' : 'flex';
+}
 </script>
 
 {% endblock %}
