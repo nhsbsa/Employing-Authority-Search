@@ -1,3 +1,4 @@
+```html
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout.html' %}
 
@@ -46,57 +47,67 @@
         </div>
       </div>
 
-      <!-- Details Table -->
-      <table id="search-details-table" role="table" class="nhsuk-table-responsive nhsuk-u-margin-top-4">
-        <tbody class="nhsuk-table__body">
+      <!-- Details Summary List -->
+      <dl class="nhsuk-summary-list nhsuk-u-margin-top-4">
 
-          <tr role="row">
-            <td><strong>Employer code</strong></td>
-            <td id="ea-ref-text">Loading...</td>
-            <td>
-              <span
-                class="nhsuk-tag copy-tag"
-                role="button"
-                tabindex="0"
-                onclick="copyToClipboard('ea-ref-text', this)"
-              >
-                Copy
-              </span>
-            </td>
-          </tr>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Employer code
+          </dt>
+          <dd class="nhsuk-summary-list__value" id="ea-ref-text">
+            Loading...
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <span
+              class="nhsuk-tag copy-tag"
+              role="button"
+              tabindex="0"
+              onclick="copyToClipboard('ea-ref-text', this)"
+            >
+              Copy
+            </span>
+          </dd>
+        </div>
 
-          <tr role="row">
-            <td><strong>Address</strong></td>
-            <td id="address-text">Loading...</td>
-            <td>
-              <span
-                class="nhsuk-tag copy-tag"
-                role="button"
-                tabindex="0"
-                onclick="copyToClipboard('address-text', this)"
-              >
-                Copy
-              </span>
-            </td>
-          </tr>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="nhsuk-summary-list__value" id="address-text">
+            Loading...
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <span
+              class="nhsuk-tag copy-tag"
+              role="button"
+              tabindex="0"
+              onclick="copyToClipboard('address-text', this)"
+            >
+              Copy
+            </span>
+          </dd>
+        </div>
 
-          <tr role="row">
-            <td><strong>Phone number</strong></td>
-            <td id="phone-text">0333 0142884</td>
-            <td>
-              <span
-                class="nhsuk-tag copy-tag"
-                role="button"
-                tabindex="0"
-                onclick="copyToClipboard('phone-text', this)"
-              >
-                Copy
-              </span>
-            </td>
-          </tr>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Phone number
+          </dt>
+          <dd class="nhsuk-summary-list__value" id="phone-text">
+            0333 0142884
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <span
+              class="nhsuk-tag copy-tag"
+              role="button"
+              tabindex="0"
+              onclick="copyToClipboard('phone-text', this)"
+            >
+              Copy
+            </span>
+          </dd>
+        </div>
 
-        </tbody>
-      </table>
+      </dl>
 
       <!-- New Search Button -->
       <div class="button-container">
@@ -160,3 +171,4 @@
 </script>
 
 {% endblock %}
+```
